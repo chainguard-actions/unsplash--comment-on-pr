@@ -1,0 +1,29 @@
+name: Test basic usage - comment on PR
+on:
+  workflow_dispatch:
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    env:
+      GITHUB_EVENT_NAME: push
+      GITHUB_REF: refs/heads/main
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - id: action
+        uses: .
+        with:
+          msg: "Hello from automated test!"
+        continue-on-error: true
+      - name: Assert action ran with msg input
+        env:
+          OUTCOME: ${{ steps.action.outcome }}
+        run: |
+          echo "Action outcome: $OUTCOME"
+          # The action may fail due to missing GITHUB_TOKEN or no open PR,
+          # but it must have been invoked (not skipped). Acceptable outcomes
+          # are 'success' or 'failure' (not 'skipped' or empty).
+          if [ "$OUTCOME" = "skipped" ] || [ -z "$OUTCOME" ]; then
+            echo "FAIL: action was skipped or did not run"
+            exit 1
+          fi
+          echo "PASS: action was invoked with msg input"

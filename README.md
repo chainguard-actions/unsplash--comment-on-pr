@@ -1,16 +1,30 @@
-# unsplash/comment-on-pr
+# Comment on PR via GitHub Action
 
-Leaves a comment on an open PR matching a push event.
+A GitHub action to comment on the relevant open PR when a commit is pushed.
 
-Hardened by [Chainguard](https://www.chainguard.dev) from the upstream action at [https://github.com/unsplash/comment-on-pr](https://github.com/unsplash/comment-on-pr).
+## Usage
 
-## Versions
+- Requires the `GITHUB_TOKEN` secret.
+- Requires the comment's message in the `msg` parameter.
+- Supports `push` and `pull_request` event types.
 
-| Version | Tag | Upstream commit |
-|---------|-----|-----------------|
-| v1.1.1 | [`v1.1.1`](https://github.com/chainguard-actions/comment-on-pr/tree/v1.1.1) | — |
-| v1.3.0 | [`v1.3.0`](https://github.com/chainguard-actions/comment-on-pr/tree/v1.3.0) | — |
-| v1.3.1 | [`v1.3.1`](https://github.com/chainguard-actions/comment-on-pr/tree/v1.3.1) | — |
+### Sample workflow
+
+```
+name: comment-on-pr example
+on: pull_request
+jobs:
+  example:
+    name: sample comment
+    runs-on: ubuntu-latest
+    steps:
+      - name: comment PR
+        uses: unsplash/comment-on-pr@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          msg: "Check out this message!"
+```
 
 ## Privacy
 
