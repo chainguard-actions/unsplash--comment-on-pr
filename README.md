@@ -11,7 +11,7 @@ Hardened by [Chainguard](https://www.chainguard.dev) from the upstream action at
 | v1.1.1 | [`v1.1.1`](https://github.com/chainguard-actions/unsplash-comment-on-pr/tree/v1.1.1) | — |
 | v1.2.0 | [`v1.2.0`](https://github.com/chainguard-actions/unsplash-comment-on-pr/tree/v1.2.0) | — |
 | v1.3.0 | [`v1.3.0`](https://github.com/chainguard-actions/unsplash-comment-on-pr/tree/v1.3.0) | — |
-| v1.3.1 | [`v1.3.1`](https://github.com/chainguard-actions/unsplash-comment-on-pr/tree/v1.3.1) | — |
+| v1.3.1 | [`v1.3.1`](https://github.com/chainguard-actions/unsplash-comment-on-pr/tree/v1.3.1) | [`b5610c6`](https://github.com/unsplash/comment-on-pr/commit/b5610c6125a7197eaec80072ea35ef53e1fc6035) |
 
 ## Privacy
 
