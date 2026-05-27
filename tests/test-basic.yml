@@ -5,6 +5,7 @@ jobs:
   test:
     runs-on: ubuntu-latest
     env:
+      GITHUB_TOKEN: fake-token
       GITHUB_EVENT_NAME: push
       GITHUB_REF: refs/heads/main
     steps:
@@ -12,10 +13,8 @@ jobs:
       - id: action
         uses: .
         with:
-          msg: "Test comment from CI"
+          msg: "Hello from test!"
           check_for_duplicate_msg: "false"
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         continue-on-error: true
       - name: Assert action ran (msg input covered)
         env:
@@ -26,4 +25,4 @@ jobs:
             echo "FAIL: action was skipped unexpectedly"
             exit 1
           fi
-          echo "PASS: action ran with msg input"
+          echo "PASS: action executed with msg input"
